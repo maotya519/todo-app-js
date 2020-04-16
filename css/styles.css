@@ -35,8 +35,9 @@ header {
     color: rgb(204, 70, 70);
     margin: 0;
 }
+.addBtn { font-weight: bold; }
 .addBtn-wra {
-    background rgb(236, 79, 32);
+    background: rgb(236, 79, 32);
     text-align: center;
     color: #ddd;
 }

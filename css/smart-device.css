@@ -49,18 +49,19 @@
 .modal-form-tx { padding: 10px 0 10px  0; }
 .form_tx { font-size: 0.8em; }
 .addBtn-wra {
-    width: 100px;
+    width: 180px;
     height: 60px;
     line-height: 60px;
     border-radius: 8px;
     box-shadow: 0 4px 4px rgb(163, 56, 24);
-    margin: 40% auto 0 auto;
+    margin: 46% auto 0 auto;
 }
 .addBtn-wra:active { top: 4px; }
 .modal-cancel {
     top: 60px;
     height: 230px;
 }
+
 .tast-item {
     border-bottom: 2px solid rgb(53, 38, 192);
     width: 90%;
