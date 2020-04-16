@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/smart-device.css">
+    <title>Todoアプリ</title>
+</head>
+<body>
+    <header>
+        <h1 class="title">Todoアプリ</h1>
+    </header>
+    <form class="search-area">
+        <input type="text" name="search" class="search" placeholder="Search Word" size="30">
+        <i class="fas fa-search"></i>
+    </form>
+    <div class="result">
+        <ul class="ul">
+            <li class="tast-item" ><p class="task_tx">TOEICの勉強をする</p><i class="fas fa-trash-alt"></i></li>
+            <li class="tast-item" ><p class="task_tx">数学を勉強する</p><i class="fas fa-trash-alt"></i></li>
+        </ul>
+    </div>
+    <div class="createBtn-parent">
+        <div class="creatListBtn-area">
+            <p class="createBtn"><i class="fas fa-pencil-alt"></i></p>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-body">
+
+            <h3 class="modal-title">create Todo</h3>
+            <form class="form">
+                <input type="text" class="addTask_tx" name="add" placeholder="追加したいタスクをご入力ください。" size="2">
+                <p class="modal-form-tx form_tx">※追加したいタスクをご入力ください。</p>
+                <p class="alert form_tx">文字を何かご入力ください。</p>
+                <div class="addBtn-wra">
+                    <p class="addBtn">Add</p>
+                </div>
+            </form>
+            <div class="modal-cancel"></div>
+          </div>
+        </div>
+      </div>
+<script src="app.js"></script>
+</body>
+</html>
