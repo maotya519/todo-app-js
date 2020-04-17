@@ -7,6 +7,7 @@ let TodoApp = {
     alert: document.querySelector('.alert'),
     addBtn: document.querySelector('.addBtn-wra'),
     todos_wra: document.querySelector('.ul'),
+    delete: document.querySelectorAll('.delete'),
     formCheck: function( task ) {
         //0　〜　16文字
         let checkTask = task;
@@ -27,7 +28,7 @@ let TodoApp = {
         return innerCheckForm();
     },
     createTodoList: function( checkTask ) {
-        const html = `<li class="tast-item" ><p class="task_tx">${ checkTask }</p><i class="fas fa-trash-alt"></i></li>`;
+        const html = `<li class="tast-item" ><p class="task_tx">${ checkTask }</p><i class="fas fa-trash-alt delete"></i></li>`;
         TodoApp.todos_wra.innerHTML += html;
         console.log( checkTask );
     }
@@ -44,4 +45,11 @@ TodoApp.addBtn.addEventListener('click', e => {
     TodoApp.formCheck(task);
     TodoApp.form.reset();
 
+},false);
+
+TodoApp.todos_wra.addEventListener('click', e => {
+    console.log( e.target.classList );
+    if ( e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
 },false);
