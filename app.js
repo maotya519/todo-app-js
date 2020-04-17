@@ -10,7 +10,7 @@ let TodoApp = {
     delete: document.querySelectorAll('.delete'),
     count: 0,
     remainTask: document.querySelector('.remainText_alert'),
-    searchForm: document.querySelector('.search-area'),
+    searchForm: document.querySelector('.search-area input'),
 
     formCheck: function( task ) {
         //0　〜　16文字
@@ -46,8 +46,6 @@ let TodoApp = {
     addCount: function( initCount ) {
         count = initCount;
         var innerFunc = function() {
-            // TodoApp.todoLists(initCount);
-
             return ++TodoApp.count;
     };
 
@@ -60,12 +58,22 @@ let TodoApp = {
         };
         return innerFunc();
     },
+    filterTasks: function(term) {
+        console.log( term );
+        Array.from(TodoApp.todos_wra.children)
+        //　フィルタリングの条件
+        .filter((todo) => !todo.textContent.toLowerCase().includes(term))
+        .forEach((todo) => todo.classList.add('filtered'));
+
+        Array.from(TodoApp.todos_wra.children)
+        .filter((todo) => todo.textContent.toLowerCase().includes(term))
+        .forEach((todo) => todo.classList.remove('filtered'));
+    }
 }
 
 
 TodoApp.createListBtn.addEventListener('click' , ()=> {
     TodoApp.modal.style.display = 'block';
-    TodoApp.searchForm.reset();
     TodoApp.canselModal.addEventListener('click', ()=> {
         TodoApp.modal.style.display = 'none';
         TodoApp.alert.style.display = 'none';
@@ -86,4 +94,10 @@ TodoApp.todos_wra.addEventListener('click', e => {
             TodoApp.remainTask.style.display = 'block';
          }
     }
+},false);
+
+TodoApp.searchForm.addEventListener('keyup', ()=> {
+    console.log( 'test');
+    const term = TodoApp.searchForm.value.trim().toLowerCase();
+    TodoApp.filterTasks(term);
 },false);

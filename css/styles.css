@@ -72,3 +72,9 @@ header {
 
 }
 .alert { display: none; }
+
+
+/* フィルタリング */
+.filtered {
+    display : none !important;
+}
