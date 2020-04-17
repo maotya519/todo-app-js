@@ -11,6 +11,23 @@ let TodoApp = {
     count: 0,
     remainTask: document.querySelector('.remainText_alert'),
     searchForm: document.querySelector('.search-area input'),
+    init: function() {
+        for( let key in localStorage ) {
+
+            let html = localStorage.getItem(key);
+            if( html ) {
+                TodoApp.todos_wra.innerHTML += localStorage.getItem(key);
+            }
+            if( localStorage.getItem('html') === null ) {
+                console.log('　アイテムがまだ入っているで ');
+                TodoApp.remainTask.style.display = 'none';
+            }
+
+        }
+
+
+
+    },
 
     formCheck: function( task ) {
         //0　〜　16文字
@@ -26,7 +43,8 @@ let TodoApp = {
             } else {
                 let countTask = TodoApp.addCount(0);
                 if ( countTask >= 1) {
-                   TodoApp.remainTask.style.display = 'none';
+                    TodoApp.remainTask.style.display = 'none';
+                    console.log( countTask);
                 }
 
                 //チェックされた値が次の関数に渡されている。
@@ -41,7 +59,7 @@ let TodoApp = {
     createTodoList: function( checkTask ) {
         const html = `<li class="tast-item" ><p class="task_tx">${ checkTask }</p><i class="fas fa-trash-alt delete"></i></li>`;
         TodoApp.todos_wra.innerHTML += html;
-        console.log( checkTask );
+        TodoApp.saveTaskToLocalStorage( checkTask, html );
     },
     addCount: function( initCount ) {
         count = initCount;
@@ -68,10 +86,21 @@ let TodoApp = {
         Array.from(TodoApp.todos_wra.children)
         .filter((todo) => todo.textContent.toLowerCase().includes(term))
         .forEach((todo) => todo.classList.remove('filtered'));
-    }
+    },
+    saveTaskToLocalStorage: function( checkTask, html) {
+        if( html ) {
+            localStorage.setItem( checkTask, html );
+            return;
+        }
+        return;
+    },
+    deleteTaskFromLocalStorage: function(task) {
+        localStorage.removeItem(task);
+        return;
+    },
 }
 
-
+TodoApp.init();
 TodoApp.createListBtn.addEventListener('click' , ()=> {
     TodoApp.modal.style.display = 'block';
     TodoApp.canselModal.addEventListener('click', ()=> {
@@ -90,6 +119,11 @@ TodoApp.todos_wra.addEventListener('click', e => {
     if ( e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
         let countTask = TodoApp.subtractionCount(0);
+
+
+        const task = e.target.parentElement.textContent.trim()
+        TodoApp.deleteTaskFromLocalStorage(task);
+        console.log( countTask);
         if ( countTask == 0) {
             TodoApp.remainTask.style.display = 'block';
          }
@@ -98,6 +132,7 @@ TodoApp.todos_wra.addEventListener('click', e => {
 
 TodoApp.searchForm.addEventListener('keyup', ()=> {
     console.log( 'test');
+
     const term = TodoApp.searchForm.value.trim().toLowerCase();
     TodoApp.filterTasks(term);
 },false);
