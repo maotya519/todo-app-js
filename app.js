@@ -24,7 +24,6 @@ let TodoApp = {
                 console.log('文字数oosugi');
                 TodoApp.alert.style.display = 'none';
             } else {
-                // console.log(TodoApp.addCount(0));
                 let countTask = TodoApp.addCount(0);
                 if ( countTask >= 1) {
                    TodoApp.remainTask.style.display = 'none';
@@ -59,13 +58,8 @@ let TodoApp = {
         var innerFunc = function() {
             return --TodoApp.count;
         };
-        // TodoApp.todoLists(initCount);
         return innerFunc();
     },
-    // todoLists: function() {
-    //     console.log(TodoApp.addCount(0));
-    //     console.log(TodoApp.subtractionCount(0));
-    // }
 }
 
 
@@ -87,8 +81,6 @@ TodoApp.todos_wra.addEventListener('click', e => {
     console.log( e.target.classList );
     if ( e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
-        // TodoApp.todoLissts();
-        // console.log(TodoApp.subtractionCount(0));
         let countTask = TodoApp.subtractionCount(0);
         if ( countTask == 0) {
             TodoApp.remainTask.style.display = 'block';
