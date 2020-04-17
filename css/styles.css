@@ -62,19 +62,13 @@ header {
     position: absolute;
     color: rgb(206, 114, 61);
 }
-<<<<<<< HEAD
 .fa-search {    color :#ddd; }
-=======
-.search-area {
-    width: 90%;
-    margin: 30px auto 0 auto;
-}
-.search {
+.remainText_alert{
+    color: #ddd;
+    position: absolute;
+    top: 200px;
+    left: 8%;
     font-size: 1.2em;
-    border-radius: 4px;
-}
-.fa-search {
-    color :#ddd;
+
 }
 .alert { display: none; }
->>>>>>> showModal_branch

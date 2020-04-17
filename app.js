@@ -9,6 +9,8 @@ let TodoApp = {
     todos_wra: document.querySelector('.ul'),
     delete: document.querySelectorAll('.delete'),
     count: 0,
+    remainTask: document.querySelector('.remainText_alert'),
+    searchForm: document.querySelector('.search-area'),
 
     formCheck: function( task ) {
         //0　〜　16文字
@@ -22,7 +24,12 @@ let TodoApp = {
                 console.log('文字数oosugi');
                 TodoApp.alert.style.display = 'none';
             } else {
-                console.log(TodoApp.addCount(0));
+                // console.log(TodoApp.addCount(0));
+                let countTask = TodoApp.addCount(0);
+                if ( countTask >= 1) {
+                   TodoApp.remainTask.style.display = 'none';
+                }
+
                 //チェックされた値が次の関数に渡されている。
                 TodoApp.createTodoList(checkTask);
                 TodoApp.alert.style.display = 'none';
@@ -40,8 +47,11 @@ let TodoApp = {
     addCount: function( initCount ) {
         count = initCount;
         var innerFunc = function() {
+            // TodoApp.todoLists(initCount);
+
             return ++TodoApp.count;
     };
+
     return innerFunc();
     },
     subtractionCount: function(initCount) {
@@ -49,13 +59,19 @@ let TodoApp = {
         var innerFunc = function() {
             return --TodoApp.count;
         };
+        // TodoApp.todoLists(initCount);
         return innerFunc();
-    }
+    },
+    // todoLists: function() {
+    //     console.log(TodoApp.addCount(0));
+    //     console.log(TodoApp.subtractionCount(0));
+    // }
 }
 
 
 TodoApp.createListBtn.addEventListener('click' , ()=> {
     TodoApp.modal.style.display = 'block';
+    TodoApp.searchForm.reset();
     TodoApp.canselModal.addEventListener('click', ()=> {
         TodoApp.modal.style.display = 'none';
         TodoApp.alert.style.display = 'none';
@@ -71,7 +87,11 @@ TodoApp.todos_wra.addEventListener('click', e => {
     console.log( e.target.classList );
     if ( e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
-        console.log(TodoApp.subtractionCount(0));
+        // TodoApp.todoLissts();
+        // console.log(TodoApp.subtractionCount(0));
+        let countTask = TodoApp.subtractionCount(0);
+        if ( countTask == 0) {
+            TodoApp.remainTask.style.display = 'block';
+         }
     }
 },false);
-// TodoApp.taskLists();
