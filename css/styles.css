@@ -78,3 +78,8 @@ header {
 .filtered {
     display : none !important;
 }
+.searchResult {
+    color: rgb(204, 70, 70);
+    text-align: center;
+    display: none;
+}
